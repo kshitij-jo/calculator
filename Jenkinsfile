@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:bookworm'
+        }
+    }
     stages {
         stage("Unit Test") {
             steps {
