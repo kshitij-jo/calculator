@@ -1,11 +1,14 @@
 pipeline {
     agent {
         dockerContainer {
-            image 'python:bookworm'
+            image 'jenkins/agent'
         }
     }
     stages {
         stage("Unit Test") {
+            agent {
+                dockerContainer 'python:bookworm'
+            }
             steps {
                 sh 'python3 -m unittest test_calculator.py'
             }
